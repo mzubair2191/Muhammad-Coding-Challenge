@@ -28,6 +28,28 @@ android {
             )
         }
     }
+
+    // Specifies one flavor dimension.
+    flavorDimensions += "version"
+    productFlavors {
+        create("A") {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // If you are using only one dimension, this property is optional,
+            // and the plugin automatically assigns all the module's flavors to
+            // that dimension.
+            dimension = "version"
+            applicationIdSuffix = ".a"
+            manifestPlaceholders["appLabel"] = "Build A"
+            versionNameSuffix = "-a"
+        }
+        create("B") {
+            dimension = "version"
+            manifestPlaceholders["appLabel"] = "Build B"
+            applicationIdSuffix = ".b"
+            versionNameSuffix = "-b"
+        }
+    }
+
     buildFeatures {
         viewBinding = true
     }
@@ -36,12 +58,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     testOptions {
         unitTests {
             isIncludeAndroidResources = true
             isReturnDefaultValues = true
         }
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
