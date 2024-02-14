@@ -66,12 +66,14 @@ class GuideActivity : AppCompatActivity() {
     }
 
     private fun displayError() {
-        binding.recyclerView.visibility = View.GONE
-        binding.progressBar.visibility = View.GONE
-        Snackbar.make(binding.root, R.string.something_went_wrong, Snackbar.LENGTH_LONG)
-            .setAction(R.string.retry) {
-                viewModel.onInput(GuidesViewModel.Input.SCREEN_LAUNCHED)
-            }
-            .show()
+        with(binding) {
+            recyclerView.visibility = View.GONE
+            progressBar.visibility = View.GONE
+            Snackbar.make(root, R.string.something_went_wrong, Snackbar.LENGTH_LONG)
+                .setAction(R.string.retry) {
+                    viewModel.onInput(GuidesViewModel.Input.SCREEN_LAUNCHED)
+                }
+                .show()
+        }
     }
 }
