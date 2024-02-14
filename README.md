@@ -12,12 +12,16 @@ and maintain the codebase.
 
 The following is very high level overview of this pattern:
 
+```
+
 -----------------             -----------------              -----------------
 |   GuideModel  |             |  GuidesActivity|              | GuidesViewModel|
 -----------------             -----------------              -----------------
 | - Data        | ----->      | - Layout       |  <---------> | - LiveData       |
 |               |             |                |              | - Business Logic |
 -----------------             -----------------              -----------------
+
+```
 
 In this flow, the GuidesActivity triggers an input event, ScreenLaunched, which is communicated to
 the GuidesViewModel. The GuidesViewModel processes this input by fetching a list of guides from a
